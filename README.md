@@ -1,7 +1,9 @@
-# yk2_save
- Tool for encrypting/decrypting Yakauza Kiwami 2 saves.
+# y6_save
+ Tool for encrypting/decrypting Yakauza 6 saves.
 
 Original decryption code from [here](https://gist.github.com/simontime/59661a189b20fc3517b20d8c9f329017) by simontime. I added proper checksum calculation and split the tool into two executables for easier usage.
+
+Yakuza 6 Key discovered by @jason098
 
 ## Usage
 
