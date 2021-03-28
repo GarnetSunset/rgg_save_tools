@@ -4,8 +4,8 @@
 #include <string.h>
 #define uint128_t unsigned __int128
 
-static const char Key[]  = "STarYZgr3DL11";
-static const int  KeyLen = 13;
+static const char Key[]  = "VI3rbPckNsea7JOUMrgT";
+static const int  KeyLen = 20;
 static const uint64_t Seed = 0x79BAA6BB6398B6F7;
 
 uint64_t mul64(uint64_t *dst, uint64_t src)
