@@ -7,8 +7,8 @@ Yakuza 6 Key discovered by @jason098
 
 ## Usage
 
-`yk2_decrypt.exe data.sav` will output into `data.json`.
+`y6_decrypt.exe data.sav` will output into `data.json`.
 
-`yk2_encrypt.exe data.json` will output into `data.sav`.
+`y6_encrypt.exe data.json` will output into `data.sav`.
 
 Alternatively you can just drag and drop the file onto the respective exe.
