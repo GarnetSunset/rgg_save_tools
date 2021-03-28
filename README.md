@@ -1,5 +1,5 @@
 # y6_save
- Tool for encrypting/decrypting Yakauza 6 saves.
+ Tool for encrypting/decrypting Yakuza 6 saves.
 
 Original decryption code from [here](https://gist.github.com/simontime/59661a189b20fc3517b20d8c9f329017) by simontime. I added proper checksum calculation and split the tool into two executables for easier usage.
 
