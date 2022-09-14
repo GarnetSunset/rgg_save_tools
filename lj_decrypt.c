@@ -4,7 +4,7 @@
 #include <string.h>
 
 static const char Key[]  = "jKMQEv7S4l9hd";
-static const int  KeyLen = 20;
+static const int  KeyLen = 13;
 
 int main(int argc, char **argv)
 {
