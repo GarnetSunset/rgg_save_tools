@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <string.h>
 
-static const char Key[]  = "VI3rbPckNsea7JOUMrgT";
+static const char Key[]  = "jKMQEv7S4l9hd";
 static const int  KeyLen = 20;
 
 int main(int argc, char **argv)
