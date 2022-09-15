@@ -17,7 +17,8 @@ jobs:
         shell: msys2 {0}
     steps:
       - name: Build Y6 executables
-        uses: msys2/setup-msys2@v2
+        uses: actions/checkout@v3
+      - uses: msys2/setup-msys2@v2
       - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       - run: ${{ matrix.compiler }} --version
       - run: ${{ matrix.compiler }} y6_decrypt.c -o y6_decrypt.exe
@@ -38,6 +39,7 @@ jobs:
     steps:
       - name: Build JE executables
         uses: msys2/setup-msys2@v2
+      - uses: actions/checkout@v3
       - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       - run: ${{ matrix.compiler }} --version
       - run: ${{ matrix.compiler }} je_decrypt.c -o je_decrypt.exe
@@ -58,6 +60,7 @@ jobs:
     steps:
       - name: Build LJ executables
         uses: msys2/setup-msys2@v2
+      - uses: actions/checkout@v3
       - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       - run: ${{ matrix.compiler }} --version
       - run: ${{ matrix.compiler }} lj_decrypt.c -o lj_decrypt.exe
