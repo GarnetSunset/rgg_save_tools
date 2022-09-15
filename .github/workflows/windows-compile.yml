@@ -1,5 +1,5 @@
-name: rgg_save_cryptor
-
+name: 'rgg save'
+description: 'build windows'
 on:
   push:
     branches: [ "master" ]
@@ -17,7 +17,6 @@ jobs:
         shell: msys2 {0}
     steps:
       - name: Build Y6 executables
-      - uses: actions/checkout@v3
       - uses: msys2/setup-msys2@v2
       - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       - run: ${{ matrix.compiler }} --version
@@ -38,7 +37,6 @@ jobs:
         shell: msys2 {0}
     steps:
       - name: Build JE executables
-      - uses: actions/checkout@v3
       - uses: msys2/setup-msys2@v2
       - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       - run: ${{ matrix.compiler }} --version
@@ -59,7 +57,6 @@ jobs:
         shell: msys2 {0}
     steps:
       - name: Build LJ executables
-      - uses: actions/checkout@v3
       - uses: msys2/setup-msys2@v2
       - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       - run: ${{ matrix.compiler }} --version
