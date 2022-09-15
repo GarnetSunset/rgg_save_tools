@@ -7,25 +7,66 @@ on:
     branches: [ "master" ]
 
 jobs:
-  amd64_windows:
+  yakuza_6:
     runs-on: windows-2019
     strategy:
       matrix:
-        compiler: [gcc, clang]
+        compiler: [ clang ]
     defaults:
       run:
         shell: msys2 {0}
     steps:
-    - uses: actions/checkout@v2
+      - name: Build Y6 executables
+      - uses: actions/checkout@v3
+      - uses: msys2/setup-msys2@v2
+      - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
+      - run: ${{ matrix.compiler }} --version
+      - run: ${{ matrix.compiler }} y6_decrypt.c -o y6_decrypt.exe
+      - run: ${{ matrix.compiler }} y6_encrypt.c -o y6_encrypt.exe
+      - run: zip y6_cryptor.zip y6_decrypt.exe y6_encrypt.exe
+      - uses: actions/upload-artifact@v3
+        with:
+          name: y6_cryptor
+          path: y6_cryptor.zip
+  judgment:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        compiler: [ clang ]
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Build JE executables
+      - uses: actions/checkout@v3
+      - uses: msys2/setup-msys2@v2
+      - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
+      - run: ${{ matrix.compiler }} --version
+      - run: ${{ matrix.compiler }} je_decrypt.c -o je_decrypt.exe
+      - run: ${{ matrix.compiler }} je_encrypt.c -o je_encrypt.exe
+      - run: zip je_cryptor.zip je_decrypt.exe je_encrypt.exe
+      - uses: actions/upload-artifact@v3
+        with:
+          name: je_cryptor
+          path: je_cryptor.zip
+  lost_judgment:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        compiler: [clang]
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+    - name: Build LJ executables
+    - uses: actions/checkout@v3
     - uses: msys2/setup-msys2@v2
-    - run: pacman --noconfirm -S make gcc
-      if: ${{ matrix.compiler == 'gcc' }}
     - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
-      if: ${{ matrix.compiler == 'clang' }}
     - run: ${{ matrix.compiler }} --version
-    - run: ${{ matrix.compiler }} y6_decrypt.c -o y6_decrypt.exe
-    - run: ${{ matrix.compiler }} y6_encrypt.c -o y6_encrypt.exe
-    - run: ${{ matrix.compiler }} je_decrypt.c -o je_decrypt.exe
-    - run: ${{ matrix.compiler }} je_encrypt.c -o je_encrypt.exe
     - run: ${{ matrix.compiler }} lj_decrypt.c -o lj_decrypt.exe
     - run: ${{ matrix.compiler }} lj_encrypt.c -o lj_encrypt.exe
+    - run: zip lj_cryptor.zip lj_decrypt.exe lj_encrypt.exe
+    - uses: actions/upload-artifact@v3
+      with:
+          name: LJ_cryptor
+          path: lj_cryptor.zip
