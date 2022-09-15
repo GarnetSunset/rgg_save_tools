@@ -11,15 +11,13 @@ jobs:
     runs-on: windows-2019
     strategy:
       matrix:
-        compiler: [gcc, clang]
+        compiler: [clang]
     defaults:
       run:
         shell: msys2 {0}
     steps:
     - uses: actions/checkout@v2
     - uses: msys2/setup-msys2@v2
-    - run: pacman --noconfirm -S make gcc
-      if: ${{ matrix.compiler == 'gcc' }}
     - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       if: ${{ matrix.compiler == 'clang' }}
     - run: ${{ matrix.compiler }} --version
