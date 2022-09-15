@@ -27,11 +27,6 @@ jobs:
         with:
           name: y6_cryptor
           path: ./*.exe
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/Yakuza6')
-        with:
-          files: y6_cryptor.zip
   judgment:
     runs-on: windows-2019
     strategy:
@@ -52,11 +47,6 @@ jobs:
         with:
           name: je_cryptor
           path: ./*.exe
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/Judgment')
-        with:
-          files: je_cryptor.zip
   lost_judgment:
     runs-on: windows-2019
     strategy:
@@ -77,8 +67,3 @@ jobs:
         with:
           name: lj_cryptor
           path: ./*.exe
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/LostJudgment')
-        with:
-          files: lj_cryptor.zip
