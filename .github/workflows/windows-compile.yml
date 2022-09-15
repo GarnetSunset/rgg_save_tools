@@ -11,19 +11,21 @@ jobs:
     runs-on: windows-2019
     strategy:
       matrix:
-        compiler: [clang]
+        compiler: [gcc, clang]
     defaults:
       run:
         shell: msys2 {0}
     steps:
     - uses: actions/checkout@v2
     - uses: msys2/setup-msys2@v2
+    - run: pacman --noconfirm -S make gcc
+      if: ${{ matrix.compiler == 'gcc' }}
     - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       if: ${{ matrix.compiler == 'clang' }}
     - run: ${{ matrix.compiler }} --version
-    - run: ${{ matrix.compiler }} y6_decrypt.exe
-    - run: ${{ matrix.compiler }} y6_encrypt.exe
-    - run: ${{ matrix.compiler }} je_decrypt.exe
-    - run: ${{ matrix.compiler }} je_encrypt.exe
-    - run: ${{ matrix.compiler }} lj_decrypt.exe
-    - run: ${{ matrix.compiler }} lj_encrypt.exe
+    - run: ${{ matrix.compiler }} y6_decrypt.c -o y6_decrypt.exe
+    - run: ${{ matrix.compiler }} y6_encrypt.c -o y6_encrypt.exe
+    - run: ${{ matrix.compiler }} je_decrypt.c -o je_decrypt.exe
+    - run: ${{ matrix.compiler }} je_encrypt.c -o je_encrypt.exe
+    - run: ${{ matrix.compiler }} lj_decrypt.c -o lj_decrypt.exe
+    - run: ${{ matrix.compiler }} lj_encrypt.c -o lj_encrypt.exe
