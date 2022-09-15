@@ -1,4 +1,4 @@
-name: 'rgg save'
+name: 'RGG Save Cryptor'
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: y6_cryptor
-          path: y6_encrypt.exe y6_decrypt.exe
+          path: ./*.exe
   judgment:
     runs-on: windows-2019
     strategy:
@@ -46,7 +46,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: je_cryptor
-          path: je_encrypt.exe je_decrypt.exe
+          path: ./*.exe
   lost_judgment:
     runs-on: windows-2019
     strategy:
@@ -66,4 +66,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: lj_cryptor
-          path: lj_encrypt.exe lj_decrypt.exe
+          path: ./*.exe
