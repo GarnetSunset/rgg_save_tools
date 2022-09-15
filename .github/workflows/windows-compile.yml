@@ -19,15 +19,14 @@ jobs:
       - name: Build Y6 executables
         uses: actions/checkout@v3
       - uses: msys2/setup-msys2@v2
-      - run: pacman --noconfirm -S make mingw-w64-x86_64-clang zip
+      - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       - run: ${{ matrix.compiler }} --version
       - run: ${{ matrix.compiler }} y6_decrypt.c -o y6_decrypt.exe
       - run: ${{ matrix.compiler }} y6_encrypt.c -o y6_encrypt.exe
-      - run: zip y6_cryptor.zip y6_decrypt.exe y6_encrypt.exe
       - uses: actions/upload-artifact@v3
         with:
           name: y6_cryptor
-          path: y6_cryptor.zip
+          path: y6_encrypt.exe y6_decrypt.exe
   judgment:
     runs-on: windows-2019
     strategy:
@@ -40,15 +39,14 @@ jobs:
       - name: Build JE executables
         uses: msys2/setup-msys2@v2
       - uses: actions/checkout@v3
-      - run: pacman --noconfirm -S make mingw-w64-x86_64-clang zip
+      - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       - run: ${{ matrix.compiler }} --version
       - run: ${{ matrix.compiler }} je_decrypt.c -o je_decrypt.exe
       - run: ${{ matrix.compiler }} je_encrypt.c -o je_encrypt.exe
-      - run: zip je_cryptor.zip je_decrypt.exe je_encrypt.exe
       - uses: actions/upload-artifact@v3
         with:
           name: je_cryptor
-          path: je_cryptor.zip
+          path: je_encrypt.exe je_decrypt.exe
   lost_judgment:
     runs-on: windows-2019
     strategy:
@@ -65,8 +63,7 @@ jobs:
       - run: ${{ matrix.compiler }} --version
       - run: ${{ matrix.compiler }} lj_decrypt.c -o lj_decrypt.exe
       - run: ${{ matrix.compiler }} lj_encrypt.c -o lj_encrypt.exe
-      - run: zip lj_cryptor.zip lj_decrypt.exe lj_encrypt.exe
       - uses: actions/upload-artifact@v3
         with:
           name: lj_cryptor
-          path: lj_cryptor.zip
+          path: lj_encrypt.exe lj_decrypt.exe
