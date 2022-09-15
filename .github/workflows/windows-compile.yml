@@ -1,17 +1,17 @@
-name: amd64_windows_gcc
+name: rgg_save_cryptor
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   yakuza_6:
     runs-on: windows-2019
     strategy:
       matrix:
-        compiler: [ clang ]
+        compiler: [clang]
     defaults:
       run:
         shell: msys2 {0}
@@ -32,7 +32,7 @@ jobs:
     runs-on: windows-2019
     strategy:
       matrix:
-        compiler: [ clang ]
+        compiler: [clang]
     defaults:
       run:
         shell: msys2 {0}
@@ -58,15 +58,15 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
-    - name: Build LJ executables
-    - uses: actions/checkout@v3
-    - uses: msys2/setup-msys2@v2
-    - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
-    - run: ${{ matrix.compiler }} --version
-    - run: ${{ matrix.compiler }} lj_decrypt.c -o lj_decrypt.exe
-    - run: ${{ matrix.compiler }} lj_encrypt.c -o lj_encrypt.exe
-    - run: zip lj_cryptor.zip lj_decrypt.exe lj_encrypt.exe
-    - uses: actions/upload-artifact@v3
-      with:
-          name: LJ_cryptor
+      - name: Build LJ executables
+      - uses: actions/checkout@v3
+      - uses: msys2/setup-msys2@v2
+      - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
+      - run: ${{ matrix.compiler }} --version
+      - run: ${{ matrix.compiler }} lj_decrypt.c -o lj_decrypt.exe
+      - run: ${{ matrix.compiler }} lj_encrypt.c -o lj_encrypt.exe
+      - run: zip lj_cryptor.zip lj_decrypt.exe lj_encrypt.exe
+      - uses: actions/upload-artifact@v3
+        with:
+          name: lj_cryptor
           path: lj_cryptor.zip
