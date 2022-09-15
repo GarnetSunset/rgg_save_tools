@@ -1,5 +1,5 @@
 name: 'rgg save'
-description: 'build windows'
+
 on:
   push:
     branches: [ "master" ]
