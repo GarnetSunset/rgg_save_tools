@@ -32,10 +32,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/Yakuza6')
         with:
           files: y6_cryptor.zip
-      - uses: ncipollo/release-action@v1
-        with:
-          artifacts: "*.zip"
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
   judgment:
     runs-on: windows-2019
     strategy:
@@ -61,10 +57,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/Judgment')
         with:
           files: je_cryptor.zip
-      - uses: ncipollo/release-action@v1
-        with:
-          artifacts: "*.zip"
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
   lost_judgment:
     runs-on: windows-2019
     strategy:
@@ -85,7 +77,8 @@ jobs:
         with:
           name: lj_cryptor
           path: ./*.exe
-      - uses: ncipollo/release-action@v1
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/LostJudgment')
         with:
-          artifacts: "*.zip"
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+          files: lj_cryptor.zip
