@@ -23,9 +23,9 @@ jobs:
     - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
       if: ${{ matrix.compiler == 'clang' }}
     - run: ${{ matrix.compiler }} --version
-    - run: make CC=${{ matrix.compiler }} y6_decrypt.exe
-    - run: make CC=${{ matrix.compiler }} y6_encrypt.exe
-    - run: make CC=${{ matrix.compiler }} je_decrypt.exe
-    - run: make CC=${{ matrix.compiler }} je_encrypt.exe
-    - run: make CC=${{ matrix.compiler }} lj_decrypt.exe
-    - run: make CC=${{ matrix.compiler }} lj_encrypt.exe
+    - run: ${{ matrix.compiler }} y6_decrypt.exe
+    - run: ${{ matrix.compiler }} y6_encrypt.exe
+    - run: ${{ matrix.compiler }} je_decrypt.exe
+    - run: ${{ matrix.compiler }} je_encrypt.exe
+    - run: ${{ matrix.compiler }} lj_decrypt.exe
+    - run: ${{ matrix.compiler }} lj_encrypt.exe
