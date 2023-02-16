@@ -85,5 +85,5 @@ jobs:
       - run: ${{ matrix.compiler }} is_encrypt.c -o is_encrypt.exe
       - uses: actions/upload-artifact@v3
         with:
-          name: lj_cryptor
+          name: is_cryptor
           path: ./*.exe
