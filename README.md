@@ -5,8 +5,10 @@ Tools for encrypting/decrypting Yakuza/Judgment saves.
 Original decryption code from [here](https://gist.github.com/simontime/59661a189b20fc3517b20d8c9f329017) by simontime. I
 added proper checksum calculation and split the tool into two executables for easier usage.
 
-Yakuza 6 Key discovered by @jason098 Judgment Key discovered by [@CapitanRetraso](https://github.com/CapitanRetraso) Lost Judgment Key discovered by
-@jason098
+- Yakuza 6 Key discovered by @jason098 
+- Judgment Key discovered by [@CapitanRetraso](https://github.com/CapitanRetraso) 
+- Lost Judgment Key discovered by @jason098
+- Ishin Key discovered by [@CapitanRetraso](https://github.com/CapitanRetraso) 
 
 ## Usage
 
