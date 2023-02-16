@@ -67,3 +67,23 @@ jobs:
         with:
           name: lj_cryptor
           path: ./*.exe
+  ishin:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        compiler: [ clang ]
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Build LJ executables
+        uses: msys2/setup-msys2@v2
+      - uses: actions/checkout@v3
+      - run: pacman --noconfirm -S make mingw-w64-x86_64-clang zip
+      - run: ${{ matrix.compiler }} --version
+      - run: ${{ matrix.compiler }} is_decrypt.c -o is_decrypt.exe
+      - run: ${{ matrix.compiler }} is_encrypt.c -o is_encrypt.exe
+      - uses: actions/upload-artifact@v3
+        with:
+          name: lj_cryptor
+          path: ./*.exe
