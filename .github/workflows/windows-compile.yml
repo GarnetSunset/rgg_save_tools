@@ -87,3 +87,23 @@ jobs:
         with:
           name: is_cryptor
           path: ./*.exe
+  y7_gog:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        compiler: [ clang ]
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Build Y7 GOG executables
+        uses: actions/checkout@v3
+      - uses: msys2/setup-msys2@v2
+      - run: pacman --noconfirm -S make mingw-w64-x86_64-clang
+      - run: ${{ matrix.compiler }} --version
+      - run: ${{ matrix.compiler }} y7_gog_decrypt.c -o y7_gog_decrypt.exe
+      - run: ${{ matrix.compiler }} y7_gog_encrypt.c -o y7_gog_encrypt.exe
+      - uses: actions/upload-artifact@v3
+        with:
+          name: y7_gog_cryptor
+          path: ./*.exe
