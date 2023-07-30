@@ -9,7 +9,7 @@ added proper checksum calculation and split the tool into two executables for ea
 - Judgment Key discovered by [@CapitanRetraso](https://github.com/CapitanRetraso) 
 - Lost Judgment Key discovered by @jason098
 - Ishin Key discovered by [@CapitanRetraso](https://github.com/CapitanRetraso)
-- YLAD GOG Key discovered by [@SutandoTsukai181](https://github.com/SutandoTsukai181)
+- YLAD GOG Key discovered by [@Timo654](https://github.com/Timo654)
 
 ## Usage
 
