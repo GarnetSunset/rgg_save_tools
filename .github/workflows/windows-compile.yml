@@ -56,16 +56,16 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
-      - name: Build LJ executables
+      - name: Build LJ/GD executables
         uses: msys2/setup-msys2@v2
       - uses: actions/checkout@v3
       - run: pacman --noconfirm -S make mingw-w64-x86_64-clang zip
       - run: ${{ matrix.compiler }} --version
-      - run: ${{ matrix.compiler }} lj_decrypt.c -o lj_decrypt.exe
-      - run: ${{ matrix.compiler }} lj_encrypt.c -o lj_encrypt.exe
+      - run: ${{ matrix.compiler }} lj_gd_decrypt.c -o lj_gd_decrypt.exe
+      - run: ${{ matrix.compiler }} lj_gd_encrypt.c -o lj_gd_encrypt.exe
       - uses: actions/upload-artifact@v3
         with:
-          name: lj_cryptor
+          name: lj_gd_cryptor
           path: ./*.exe
   ishin:
     runs-on: windows-2019
